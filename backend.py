@@ -83,8 +83,11 @@ def ShoppingCartPage():
         quantity = int(product['quantity'])
         total_price += price * quantity
 
-        return render_template('ShoppingCartPage.html', total_price=total_price)
-    return render_template('ShoppingCartPage.html')
+    return render_template('ShoppingCartPage.html', total_price=total_price)
+
+    
+    
+    
 if ــnameــ == 'ــmainــ':
     app.run(debug=True)
     
