@@ -72,6 +72,12 @@ def ShoppingCartPage():
         product_ids = request.form.getlist('product_id')
         quantities = request.form.getlist('quantity')
 
+        for product_id, quantity in zip(product_ids, quantities):
+            for product in products:
+                if product['product_id'] == product_id:
+                    product['quantity'] = quantity
+                    break
+    
 if ــnameــ == 'ــmainــ':
     app.run(debug=True)
     
