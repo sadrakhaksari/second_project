@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 
 
-app = Flask(name)
+app = Flask(ــnameــ)
 """
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.db'
@@ -62,6 +62,20 @@ def AddItemPage():
 
     return render_template('AddItemPage.html')
 
+@app.route('/')
+def index():
+    return render_template('index.html', clothing_list=clothing_list, electronics_list=electronics_list, kitchenware_list=kitchenware_list)
 
-if name == 'main':
+@app.route('/ShoppingCartPage', methods=['GET', 'POST'])
+def ShoppingCartPage():
+    if request.method == 'POST':
+        product_ids = request.form.getlist('product_id')
+        quantities = request.form.getlist('quantity')
+
+if ــnameــ == 'ــmainــ':
     app.run(debug=True)
+    
+    
+    
+    
+ 
