@@ -77,7 +77,14 @@ def ShoppingCartPage():
                 if product['product_id'] == product_id:
                     product['quantity'] = quantity
                     break
-    
+    total_price = 0
+    for product in products:
+        price = float(product['price_IRR'])
+        quantity = int(product['quantity'])
+        total_price += price * quantity
+
+        return render_template('ShoppingCartPage.html', total_price=total_price)
+    return render_template('ShoppingCartPage.html')
 if ــnameــ == 'ــmainــ':
     app.run(debug=True)
     
