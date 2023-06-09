@@ -240,15 +240,8 @@
   </script>
 
   <body>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <div class="flashes">
-        {% for message in messages %}
-          <p>{{ message }}</p>
-        {% endfor %}
-      </div>
-    {% endif %}
-  {% endwith %}
+  
+
     
     <header>
       <a href="/">
@@ -258,14 +251,14 @@
         <input id="search-bar" type="search" placeholder="Search for items...">
         <button id="search-btn" type="submit"><a href="/error">Search</a></button>
       </form>
-      <a href="/cart">
+      <a href="/ShoppingCartPage">
       <img src="https://i.postimg.cc/MpXNG2F9/Shopping-Cart-Logo.png" id="ShoppingCart" width="50" height="50">
       </a>
-      <a href="/sell">
+      <a href="/AddItemPage">
         <button id="sell-btn">Sell Now!</button>
       </a>
     </header>
-
+    
     <nav id="search">
       <a href="#clothing" id="Categories">Clothing</a>
       <a href="#electronics" id="Categories">Electronics</a>
@@ -285,16 +278,31 @@
           <p class="item-description">{{ item.description }}</p>
           <p class="item-price">{{ item.price_IRR }} IRR</p>
           <p class="item-price">{{ item.price_USD }} USD</p>
-          <form method="POST" action="{{ url_for('main_page') }}">
+          <form method="POST" action="{{ url_for('index') }}">
+            <input type="number" name="quantity" value="1" min="1">
             <input type="hidden" name="item_id" value="{{ loop.index0 }}">
-            <input type="hidden" name="list_name" value="clothing">
             <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
         </form>
         </div>
       </section> 
       {% endfor %}
     </div>
-
+    <div class="items-section">
+      {% for item in items %}
+      <div class="item">
+          <img src="{{ item.image }}" alt="Item image">
+          <h2 class="item-name">{{ item.name }}</h2>
+          <p class="item-description">{{ item.description }}</p>
+          <p class="item-price">{{ item.price_IRR }} IRR</p>
+          <p class="item-price">{{ item.price_USD }} USD</p>
+          <form method="POST" action="{{ url_for('ShoppingCartPage') }}">
+            <input type="number" name="quantity" value="1" min="1">
+            <input type="hidden" name="item_id" value="{{ loop.index0 }}">
+              <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+          </form>
+      </div>
+      {% endfor %}
+  </div>
 
       <div class="category-container electronics-category" id="electronics">
         <a href="#">
@@ -308,9 +316,9 @@
             <p class="item-description">{{ item.description }}</p>
             <p class="item-price">{{ item.price_IRR }} IRR</p>
             <p class="item-price">{{ item.price_USD }} USD</p>
-            <form method="POST" action="{{ url_for('main_page') }}">
+            <form method="POST" action="{{ url_for('ShoppingCartPage') }}">
+              <input type="number" name="quantity" value="1" min="1">
               <input type="hidden" name="item_id" value="{{ loop.index0 }}">
-              <input type="hidden" name="list_name" value="electronics">
               <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
           </form>
           </div>
@@ -330,9 +338,9 @@
             <p class="item-description">{{ item.description }}</p>
             <p class="item-price">{{ item.price_IRR }} IRR</p>
             <p class="item-price">{{ item.price_USD }} USD</p>
-            <form method="POST" action="{{ url_for('main_page') }}">
+            <form method="POST" action="{{ url_for('ShoppingCartPage') }}">
+              <input type="number" name="quantity" value="1" min="1">
               <input type="hidden" name="item_id" value="{{ loop.index0 }}">
-              <input type="hidden" name="list_name" value="kitchenware">
               <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
           </form>
           </div>
@@ -352,9 +360,9 @@
             <p class="item-description">{{ item.description }}</p>
             <p class="item-price">{{ item.price_IRR }} IRR</p>
             <p class="item-price">{{ item.price_USD }} USD</p>
-            <form method="POST" action="{{ url_for('main_page') }}">
+            <form method="POST" action="{{ url_for('ShoppingCartPage') }}">
+              <input type="number" name="quantity" value="1" min="1">
               <input type="hidden" name="item_id" value="{{ loop.index0 }}">
-              <input type="hidden" name="list_name" value="miscellaneous">
               <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
           </form>
           </div>
@@ -364,20 +372,23 @@
     </nav> 
 
     <button id="back-to-top">Back to Top</button>
+
     <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <p>&copy; 2023 ShopAndSellNow. All rights reserved to PhantomX.</p>
-            </div>
-            <div class="col-md-6">
-              <ul class="footer-links">
-                <li><a href="/">Home</a></li>
-              </ul>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2023 ShopAndSellNow. All rights reserved to PhantomX.</p>
+          </div>
+          <div class="col-md-6">
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/error">About Us</a></li>
+              <li><a href="/error">Contact Us</a></li>
+            </ul>
           </div>
         </div>
-      </footer>
-  
-    </body>
-  </html>
+      </div>
+    </footer>
+
+  </body>
+</html>
