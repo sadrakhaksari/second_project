@@ -1,0 +1,155 @@
+
+<!-- #HTML -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sell Now! - International Digital Shop's Selling Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        background-color: #0064d2;
+      }
+      h1 {
+        text-align: center;
+      }
+      #logo {
+        width: 150px;
+      }
+      form {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #bec2f3;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+      }
+      #Reminder{
+        font-size: x-small;
+        display: inline-block;
+        margin-left: 10px;
+      }
+
+      input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+      input[type="submit"] {
+        background-color: #ac2ca7;
+        color: #cecccc;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      input[type="submit"]:hover {
+        background-color: #90248c;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        #logo {
+          margin-bottom: 10px;
+        }
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .category {
+          margin: 10px 0;
+        }
+        form {  
+          width: 100%;
+        }
+      }
+      .flashes {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.flashes p {
+  margin: 0;
+  padding: 5px;
+  color: #333;
+}
+    </style>
+  </head>
+
+  <body>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flashes">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+    <header>
+      <a href="/">
+       <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
+      </a>
+    </header>
+
+    <h1 {text-align: center;}>
+    <h1>Sell Your Stuff</h1>
+    <form action="AddItemPage" , method="POST">
+      <label for="item-name">Item Name: <p id="Reminder">(No more then 40 characters)</p></label>
+      <input type="text" id="item-name" name="item-name" required maxlength="50">
+      <label for="item-id">Item Id: <p id="Reminder">(No more then 7 characters)</p></label>
+      <input type="text" id="item-id" name="item-id" required maxlength="50">
+      <label for="item-description">Item Description:<p id="Reminder">(No more then 60 characters)</p></label>
+      <textarea id="item-description" name="item-description" required maxlength="60"></textarea>
+      <label for="item-price">Item Price (IRR):<p id="Reminder">(No more then 12 digits)</p></label>
+      <input type="text" id="item-price" name="item-price" required maxlength="12">
+      <label for="item-image">Item Image:<p id="Reminder">(Please enter the URL) <p id="Reminder"><a href="https://postimg.cc/">[You can use this site to upload images]</a></p>  </label>
+      <input type="text" id="item-image" name="item-image">
+      <label for="item-category">Item Category:</label>
+      <select id="item-category" name="item-category" required>
+        <option value="">Select a category</option>
+        <option value="clothing">Clothing</option>
+        <option value="electronics">Electronics</option>
+        <option value="kitchenware">Kitchenware</option>
+        <option value="miscellaneous">Miscellaneous</option>
+      </select>
+      <hr>
+      <input type="submit" value="Sell Item">
+    </form>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2023 ShopAndSellNow. All rights reserved to PhantomX.</p>
+          </div>
+          <div class="col-md-6">
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html> 

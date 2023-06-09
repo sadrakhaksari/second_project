@@ -1,0 +1,394 @@
+
+<!-- #HTML -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shop and Sell Now! - International Digital Shop's Main Pagex`</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #0064d2;
+      }
+      #sell-btn
+      {
+        float: right;
+        font-size: x-large;
+        color: #f2f2f2;
+        background-color: rgb(134, 10, 132);
+        transition: transform 0.3s ease-in-out;
+      }
+      #sell-btn:hover{
+        color: rgb(134, 10, 132);
+        background-color: #f2f2f2;
+        transform: scale(1.2);
+      }
+      #search-btn{
+        font-size: larger;
+        background-color: #0064d2;
+        color: #ffffff;
+      }
+      #search-btn:hover{
+        color: #0064d2;
+        background-color: #ffffff;
+        transform: scale(1.07);
+      }
+      #search-bar{
+        font-size: large;
+        width: 320px;
+      }
+      #search{
+        align-items: center;
+        align-self: center;
+        text-align: center;
+        font-size: larger ;
+      }
+      #ShoppingCart{
+        margin-right: 80px;
+      }
+      nav {
+        display: flex-start;
+        object-position: top;
+        justify-content: space-between;
+        align-items: flex;
+        padding: 10px;
+        background-color: #ffffff;
+      }
+      .category {
+        align-items: center;
+        margin: 10px;
+      }
+      #Categories{
+        text-align: center;
+        border: 2px solid #ccc;
+        margin: 10px;
+        margin-left: 70px;
+        transition: border-color 0.3s ease-in-out;
+      }
+      #Categories:hover{
+        border-color:rgb(134, 10, 132);
+      }
+      #Titles{
+        border: 2px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        margin-left: 100px;
+        transition: border-color 0.3s ease-in-out;
+      }
+      #Titles:hover{
+        border-color:rgb(134, 10, 132);
+      }
+      form {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      .items-section {
+        display: flex;
+        flex-wrap: wrap;
+      flex-direction: row-reverse; 
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .item {
+        background-color: #ffffff;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        flex: 1 0 30%; 
+        position: relative;
+      }
+
+      .item img {
+        width: 230px;
+        height: 230px;
+        display: block;
+        margin-bottom: 15px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        border: 2px solid #333;
+      }
+
+      .item-name {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .item-description {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .item-price {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .category-container 
+      {
+       display: inline-table;
+       top: 0;
+      position: center;
+       flex-wrap: wrap;
+       width: 100%;
+       margin-bottom: 20px;
+      }
+   
+   .clothing-category {
+     width: 60%;
+    }
+   
+   .electronics-category {
+     width: 60%;
+    }
+    .kitchenware-category{
+      width: 60%;
+    }
+    .miscellaneous-category{
+      width: 60%;
+    }
+      .add-to-cart {
+        background-color: #0064d2;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      .add-to-cart:hover {
+        background-color: #0052ab;
+      }
+      input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+      #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        background-color: #0064d2;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none; 
+        z-index: 1000; 
+      }
+      css
+.flashes {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+ .flashes p {
+  margin: 0;
+  padding: 5px;
+  color: #333;
+}
+    </style>
+  </head>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var backToTopButton = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", function () {
+        if (window.pageYOffset > 300) {
+          backToTopButton.style.display = "block";
+        } else {
+          backToTopButton.style.display = "none";
+        }
+      });
+
+      backToTopButton.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+
+    function addToCart(itemId) {
+    // Handle adding item to cart here
+    console.log("Item added to cart:", itemId);
+  }
+  </script>
+
+  <body>
+  
+
+    
+    <header>
+      <a href="/">
+       <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
+      </a>
+       <form id="search">
+        <input id="search-bar" type="search" placeholder="Search for items...">
+        <button id="search-btn" type="submit"><a href="/error">Search</a></button>
+      </form>
+      <a href="/ShoppingCartPage">
+      <img src="https://i.postimg.cc/MpXNG2F9/Shopping-Cart-Logo.png" id="ShoppingCart" width="50" height="50">
+      </a>
+      <a href="/AddItemPage">
+        <button id="sell-btn">Sell Now!</button>
+      </a>
+    </header>
+    
+    <nav id="search">
+      <a href="#clothing" id="Categories">Clothing</a>
+      <a href="#electronics" id="Categories">Electronics</a>
+      <a href="#kitchenware" id="Categories">Kitchenware</a>
+      <a href="#miscellaneous" id="Categories">Miscellaneous</a>
+    </nav>
+
+    <div class="category-container clothing-category" id="clothing">
+      <a href="#">
+        <img src="https://i.postimg.cc/fTxgYKPf/Clothing-Category.png" width="150" height="50" alt="Clothing" id="Titles">
+      </a>
+      {% for item in clothing_list %}
+      <section class="items-section">
+        <div class="item">
+          <img src="{{ item.image }}" alt="Item image">
+          <h2 class="item-name">{{ item.name }}</h2>
+          <p class="item-description">{{ item.description }}</p>
+          <p class="item-price">{{ item.price_IRR }} IRR</p>
+          <p class="item-price">{{ item.price_USD }} USD</p>
+          <form method="POST" action="{{ url_for('index') }}">
+            <input type="number" name="quantity" value="1" min="1">
+            <input type="hidden" name="item_id" value="{{ loop.index0 }}">
+            <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+        </form>
+        </div>
+      </section> 
+      {% endfor %}
+    </div>
+    <div class="items-section">
+      {% for item in items %}
+      <div class="item">
+          <img src="{{ item.image }}" alt="Item image">
+          <h2 class="item-name">{{ item.name }}</h2>
+          <p class="item-description">{{ item.description }}</p>
+          <p class="item-price">{{ item.price_IRR }} IRR</p>
+          <p class="item-price">{{ item.price_USD }} USD</p>
+          <form method="POST" action="{{ url_for('ShoppingCartPage') }}">
+            <input type="number" name="quantity" value="1" min="1">
+            <input type="hidden" name="item_id" value="{{ loop.index0 }}">
+              <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+          </form>
+      </div>
+      {% endfor %}
+  </div>
+
+      <div class="category-container electronics-category" id="electronics">
+        <a href="#">
+          <img src="https://i.postimg.cc/ZnXGDMLf/Electronics-Category.png" width="180" height="50" alt="Electronics" id="Titles">
+        </a>
+        {% for item in electronics_list %}
+        <section class="items-section">
+          <div class="item">
+            <img src="{{ item.image }}" alt="Item image">
+            <h2 class="item-name">{{ item.name }}</h2>
+            <p class="item-description">{{ item.description }}</p>
+            <p class="item-price">{{ item.price_IRR }} IRR</p>
+            <p class="item-price">{{ item.price_USD }} USD</p>
+            <form method="POST" action="{{ url_for('ShoppingCartPage') }}">
+              <input type="number" name="quantity" value="1" min="1">
+              <input type="hidden" name="item_id" value="{{ loop.index0 }}">
+              <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+          </form>
+          </div>
+        </section> 
+        {% endfor %}
+      </div>
+
+      <div class="category-container kitchenware-category" id="kitchenware">
+        <a href="#">
+          <img src="https://i.postimg.cc/9M7W3Yy0/Kitchen-Ware-Category.png" width="220" height="50" alt="Kitchenware" id="Titles">
+        </a>
+        {% for item in kitchenware_list %}
+        <section class="items-section">
+          <div class="item">
+            <img src="{{ item.image }}" alt="Item image">
+            <h2 class="item-name">{{ item.name }}</h2>
+            <p class="item-description">{{ item.description }}</p>
+            <p class="item-price">{{ item.price_IRR }} IRR</p>
+            <p class="item-price">{{ item.price_USD }} USD</p>
+            <form method="POST" action="{{ url_for('ShoppingCartPage') }}">
+              <input type="number" name="quantity" value="1" min="1">
+              <input type="hidden" name="item_id" value="{{ loop.index0 }}">
+              <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+          </form>
+          </div>
+        </section> 
+        {% endfor %}
+      </div>
+
+      <div class="category-container miscellaneous-category" id="miscellaneous">
+        <a href="#">
+          <img src="https://i.postimg.cc/ydFwXQFm/Miscellaneous-Category.png" width="240" height="50" alt="Miscellaneous" id="Titles">
+        </a>
+        {% for item in miscellaneous_list %}
+        <section class="items-section">
+          <div class="item">
+            <img src="{{ item.image }}" alt="Item image">
+            <h2 class="item-name">{{ item.name }}</h2>
+            <p class="item-description">{{ item.description }}</p>
+            <p class="item-price">{{ item.price_IRR }} IRR</p>
+            <p class="item-price">{{ item.price_USD }} USD</p>
+            <form method="POST" action="{{ url_for('ShoppingCartPage') }}">
+              <input type="number" name="quantity" value="1" min="1">
+              <input type="hidden" name="item_id" value="{{ loop.index0 }}">
+              <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+          </form>
+          </div>
+        </section> 
+        {% endfor %}
+      </div>
+    </nav> 
+
+    <button id="back-to-top">Back to Top</button>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2023 ShopAndSellNow. All rights reserved to PhantomX.</p>
+          </div>
+          <div class="col-md-6">
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/error">About Us</a></li>
+              <li><a href="/error">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
